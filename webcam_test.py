@@ -45,7 +45,7 @@ def main(args):
         samples = vibe.set_background(frame_gray)
     else:
         rval = False
-    time.sleep(1)
+    #time.sleep(1)
     while rval:
         rval, frame = vc.read()
         frame_rgb=cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)

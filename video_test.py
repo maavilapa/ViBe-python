@@ -16,7 +16,7 @@ def make_parser():
     parser.add_argument("--N", default=20, type=int, help="N")
     parser.add_argument("--min", default=2, type=int, help="min")
     parser.add_argument("--R", default=20, type=int, help="R")
-    parser.add_argument("--phi", default=1, type=int, help="phi")
+    parser.add_argument("--phi", default=16, type=int, help="phi")
     parser.add_argument("--scale", default=2, type=int, help="scale image by some value")
     parser.add_argument("--numba", dest="numba", default=True, action="store_true", help="test mot20.")
     return parser
@@ -31,7 +31,7 @@ def main(args):
     #video_path="training092.mp4"
     assert os.path.isfile(video_path), "Wrong path"
     vs = cv2.VideoCapture(video_path)
-    vs.set(cv2.CAP_PROP_POS_FRAMES, 50)
+    vs.set(cv2.CAP_PROP_POS_FRAMES, 0)
     #scale=int(input("Scale video by:"))
     scale=args.scale
     while True:

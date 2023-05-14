@@ -17,7 +17,7 @@ class ViBe():
 
 @jit(nopython=False)
 def set_background(I_gray, N):
-    I_pad = np.pad(I_gray, 1, 'symmetric')
+    I_pad = np.pad(I_gray, 8, 'symmetric')
     height = I_pad.shape[0]
     width = I_pad.shape[1]
     samples = np.zeros((height,width,N))
@@ -26,12 +26,12 @@ def set_background(I_gray, N):
             for n in range(N):
                 x, y = 0, 0
                 while(x == 0 and y == 0):
-                    x = np.random.randint(-1, 1+1)
-                    y = np.random.randint(-1, 1+1)
+                    x = np.random.randint(-8, 9)
+                    y = np.random.randint(-8, 9)
                 ri = i + x
                 rj = j + y
                 samples[i, j, n] = I_pad[ri, rj]
-    samples = samples[1:height-1, 1:width-1]
+    samples = samples[8:height-8, 8:width-8]
     return samples
 
 @jit(nopython=False)
@@ -57,8 +57,8 @@ def update(I_gray, samples, N, _min, R, phi):
                 if r == 0:
                     x, y = 0, 0
                     while(x == 0 and y == 0):
-                        x = np.random.randint(-1, 1)
-                        y = np.random.randint(-1, 1)
+                        x = np.random.randint(-8, 9)
+                        y = np.random.randint(-8, 9)
                     r = np.random.randint(0, N-1+1)
                     ri = i + x
                     rj = j + y
