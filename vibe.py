@@ -21,8 +21,8 @@ def set_background(I_gray, N):
     height = I_pad.shape[0]
     width = I_pad.shape[1]
     samples = np.zeros((height,width,N))
-    for i in range(1, height - 1):
-        for j in range(1, width - 1):
+    for i in range(8, height - 8):
+        for j in range(8, width - 8):
             for n in range(N):
                 x, y = 0, 0
                 while(x == 0 and y == 0):
